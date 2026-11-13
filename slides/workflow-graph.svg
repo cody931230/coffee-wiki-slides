@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="900" height="360" font-family="Noto Sans TC, Microsoft JhengHei, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a4a24"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b5462b"/>
+    </marker>
+  </defs>
+  <rect width="900" height="360" fill="#fbf8f3"/>
+  <text x="450" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#7a4a24">咖啡萃取簡報：workflow 流程圖</text>
+
+  <!-- nodes -->
+  <g stroke="#7a4a24" stroke-width="2" fill="#ffffff">
+    <rect x="30"  y="110" width="150" height="70" rx="12"/>
+    <rect x="235" y="110" width="150" height="70" rx="12"/>
+    <rect x="440" y="110" width="150" height="70" rx="12"/>
+    <rect x="645" y="110" width="150" height="70" rx="12"/>
+  </g>
+  <g font-size="19" fill="#2b2118" text-anchor="middle">
+    <text x="105" y="152">取得來源</text>
+    <text x="310" y="152">查 Wiki</text>
+    <text x="515" y="152">整理重點</text>
+    <text x="720" y="152">檢查數字</text>
+  </g>
+  <rect x="740" y="250" width="150" height="70" rx="12" fill="#ffffff" stroke="#7a4a24" stroke-width="2"/>
+  <text x="815" y="292" font-size="19" fill="#2b2118" text-anchor="middle">產生簡報</text>
+
+  <!-- forward edges -->
+  <g stroke="#7a4a24" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+    <line x1="180" y1="145" x2="233" y2="145"/>
+    <line x1="385" y1="145" x2="438" y2="145"/>
+    <line x1="590" y1="145" x2="643" y2="145"/>
+    <path d="M720,180 L720,215 L815,215 L815,248"/>
+  </g>
+
+  <!-- feedback edges (red): check fails -->
+  <g stroke="#b5462b" stroke-width="2" fill="none" stroke-dasharray="6 5" marker-end="url(#arrRed)">
+    <path d="M720,110 C720,40 515,40 515,108"/>
+    <path d="M105,110 C105,40 310,40 310,108"/>
+  </g>
+  <g font-size="15" fill="#b5462b" text-anchor="middle">
+    <text x="617" y="48">不通過：回到整理</text>
+    <text x="207" y="48">來源不足：回到取得來源</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="15" fill="#8a7a6a">
+    <text x="30" y="330">實線：正常流程 ｜ 虛線：檢查不通過時的回流</text>
+    <text x="30" y="350">數字未通過檢查的內容，不得進入簡報正文。</text>
+  </g>
+</svg>

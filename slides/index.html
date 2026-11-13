@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>咖啡萃取：水溫、粉水比、研磨與萃取率</title>
+<style>
+  :root { --bg:#fbf8f3; --ink:#2b2118; --accent:#7a4a24; --muted:#8a7a6a; --warn:#b5462b; --ok:#3d6b3d; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:#1f1812; font-family: "Noto Sans TC","Microsoft JhengHei",sans-serif; color:var(--ink); }
+  .deck { position:relative; width:100vw; height:100vh; overflow:hidden; }
+  .slide { position:absolute; inset:0; margin:auto; width:min(92vw, 1280px); height:min(86vh, 720px); background:var(--bg); border-radius:16px; padding:56px 64px; box-shadow:0 20px 60px rgba(0,0,0,.4); display:none; flex-direction:column; overflow:auto; }
+  .slide.active { display:flex; }
+  h1 { font-size:44px; margin:0 0 16px; color:var(--accent); }
+  h2 { font-size:34px; margin:0 0 20px; color:var(--accent); }
+  p, li { font-size:22px; line-height:1.6; }
+  .lead { font-size:26px; color:var(--ink); }
+  .tag { display:inline-block; font-size:14px; padding:3px 10px; border-radius:999px; background:#eadccb; color:#5a3d22; margin-left:8px; vertical-align:middle; }
+  .warn { color:var(--warn); font-weight:700; }
+  .ok { color:var(--ok); font-weight:700; }
+  table { border-collapse:collapse; width:100%; font-size:19px; margin-top:8px; }
+  th, td { border-bottom:1px solid #d9cbb8; padding:10px 12px; text-align:left; vertical-align:top; }
+  th { color:var(--accent); font-weight:700; }
+  .flow { display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin:18px 0; }
+  .node { background:#fff; border:2px solid var(--accent); border-radius:12px; padding:12px 16px; font-size:20px; min-width:150px; text-align:center; }
+  .arrow { font-size:26px; color:var(--accent); }
+  .note { font-size:16px; color:var(--muted); margin-top:auto; padding-top:16px; }
+  .card { background:#fff; border-radius:12px; padding:18px 22px; margin:8px 0; border-left:6px solid var(--accent); }
+  .nav { position:fixed; bottom:14px; left:50%; transform:translateX(-50%); color:#ddd; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <section class="slide active">
+    <h1>咖啡萃取：水溫、粉水比、研磨與萃取率</h1>
+    <p class="lead">以 LLM Wiki 為知識來源，說明一杯咖啡「為什麼會好喝或不好喝」。</p>
+    <p>本簡報的每個數字都可回溯到 Wiki 的數字表，並標示來源層級：一手（SCA 官方）、次級（器材商、烘焙商）、三級（零售部落格）。</p>
+    <div class="note">操作：← → 翻頁</div>
+  </section>
+
+  <section class="slide">
+    <h2>萃取是什麼？</h2>
+    <p class="lead">用水把烘焙咖啡豆中可溶的物質溶出來。</p>
+    <div class="card"><p>一顆烘焙咖啡豆大約有四分之一到三分之一的質量能溶於水。</p><p style="font-size:16px;color:#8a7a6a">來源：BUNN SCAE 控制圖（次級）</p></div>
+    <p>控制一杯咖啡，主要看三個變數：<b>強度</b>、<b>萃取率</b>、<b>粉水比</b>。</p>
+    <div class="note">Wiki：01-咖啡萃取概論</div>
+  </section>
+
+  <section class="slide">
+    <h2>萃取率與 TDS</h2>
+    <div class="card"><p><b>萃取率（brew yield）</b>：咖啡粉中被萃取進咖啡液的質量百分比。</p><p style="font-size:16px;color:#8a7a6a">來源：SCA 310（一手）</p></div>
+    <div class="card"><p><b>TDS（總溶解固體）</b>：咖啡液中溶解物的濃度，常以 % 表示，可用折射儀量測。</p><p style="font-size:16px;color:#8a7a6a">來源：BUNN SCAE 控制圖（次級）</p></div>
+    <p>兩者要一起看。只看 TDS，無法判斷是萃取不足還是過度萃取。</p>
+    <div class="note">Wiki：02-萃取率與TDS</div>
+  </section>
+
+  <section class="slide">
+    <h2>Golden Cup 的數字並列 <span class="tag warn">衝突</span></h2>
+    <table>
+      <tr><th>來源</th><th>TDS</th><th>萃取率</th><th>層級</th></tr>
+      <tr><td>SCA 310（設備標準）</td><td>1.15–1.55%（目標）</td><td>未給範圍</td><td>一手</td></tr>
+      <tr><td>BUNN 手冊</td><td>1.15–1.35%</td><td>18–22%</td><td>次級</td></tr>
+      <tr><td>Jim's 配方手冊</td><td>11.5–13.5 g/L（對應 1.15–1.35%）</td><td>18–22%</td><td>次級，轉引</td></tr>
+      <tr><td>Seattle 指南</td><td>1.15–1.35%</td><td>18–22%</td><td>三級，文中標示引用 SCA</td></tr>
+    </table>
+    <p class="warn" style="margin-top:18px">強度範圍不一致，尚未取得官方 Golden Cup 原文，待核對。</p>
+    <div class="note">Wiki：數字表、06-數字衝突與查證</div>
+  </section>
+
+  <section class="slide">
+    <h2>粉水比</h2>
+    <div class="card"><p>SCA 310 的標準粉水比為 <b>55 g 咖啡 / 1 kg 水</b>，約 <b>1:18</b>。</p><p style="font-size:16px;color:#8a7a6a">來源：SCA 310（一手）</p></div>
+    <div class="card"><p>器材商圖表的範圍為 <b>1:17 至 1:22</b>。</p><p style="font-size:16px;color:#8a7a6a">來源：BUNN 手冊（次級）</p></div>
+    <p class="warn">1:18 是標準點，1:17–1:22 是圖表範圍。兩者不可混為一談。</p>
+    <div class="note">Wiki：03-粉水比</div>
+  </section>
+
+  <section class="slide">
+    <h2>水溫：三種溫度不要混用</h2>
+    <table>
+      <tr><th>類型</th><th>數值</th><th>來源</th></tr>
+      <tr><td>新鮮進水（設備測試）</td><td>17 ± 3 °C</td><td>SCA 310</td></tr>
+      <tr><td>沖煮水溫（slurry）</td><td>90–96 °C，33% 水量噴灑後達到</td><td>SCA 310</td></tr>
+      <tr><td>保溫</td><td>80–85 °C（前 30 分鐘，不超過 85）</td><td>SCA 310；BUNN</td></tr>
+    </table>
+    <p style="margin-top:18px">換算：195°F ≈ 90.6 °C，205°F ≈ 96.1 °C。</p>
+    <div class="note">Wiki：04-水溫</div>
+  </section>
+
+  <section class="slide">
+    <h2>研磨與接觸時間</h2>
+    <div class="card"><p><b>研磨</b>：SCA 310 以篩分定義。平底濾杯：≥65% 介於 589–1168 µm。</p><p style="font-size:16px;color:#8a7a6a">來源：SCA 310（一手）</p></div>
+    <div class="card"><p><b>接觸時間</b>：SCA 310 未給上限。BUNN 手冊給最長 8 分鐘。</p><p style="font-size:16px;color:#8a7a6a">來源：SCA 310；BUNN（次級）</p></div>
+    <p class="warn">器材商的上限不是 SCA 標準，需標示來源層級。</p>
+    <div class="note">Wiki：05-研磨與接觸時間</div>
+  </section>
+
+
+
+</div>
+<div class="nav">← → 翻頁 ｜ <span id="pg"></span></div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let i = 0;
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    document.getElementById('pg').textContent = (i + 1) + ' / ' + slides.length;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') show(i + 1);
+    if (e.key === 'ArrowLeft') show(i - 1);
+  });
+  show(0);
+</script>
+</body>
+</html>
